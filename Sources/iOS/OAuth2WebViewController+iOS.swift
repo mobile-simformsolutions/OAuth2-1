@@ -87,6 +87,7 @@ open class OAuth2WebViewController: UIViewController, WKNavigationDelegate {
 	
 	/// An overlay view containing a spinner.
 	var loadingView: UIView?
+	var activityIndicator: UIActivityIndicatorView?
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -149,11 +150,17 @@ open class OAuth2WebViewController: UIViewController, WKNavigationDelegate {
 	}
 	
 	func showLoadingIndicator() {
-		// TODO: implement
+		activityIndicator = UIActivityIndicatorView(style: .gray)
+		activityIndicator?.tintColor = .black
+		activityIndicator?.startAnimating()
+		activityIndicator?.center = view.center
+		view.addSubview(activityIndicator!)
+		view.bringSubviewToFront(activityIndicator!)
 	}
 	
 	func hideLoadingIndicator() {
-		// TODO: implement
+		activityIndicator?.stopAnimating()
+		activityIndicator?.removeFromSuperview()
 	}
 	
 	func showErrorMessage(_ message: String, animated: Bool) {
