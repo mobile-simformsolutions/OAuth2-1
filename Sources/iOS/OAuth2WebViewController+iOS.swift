@@ -150,11 +150,13 @@ open class OAuth2WebViewController: UIViewController, WKNavigationDelegate {
 	}
 	
 	func showLoadingIndicator() {
-		if #available(iOS 13.0, *) {
-			activityIndicator = UIActivityIndicatorView(style: .large)
-		} else {
-			activityIndicator = UIActivityIndicatorView(style: .gray)
-		}
+//		if #available(iOS 13.0, *) {
+//			activityIndicator = UIActivityIndicatorView(style: .large)
+//		} else {
+//			activityIndicator = UIActivityIndicatorView(style: .gray)
+//		}
+		activityIndicator = UIActivityIndicatorView.init()
+		activityIndicator?.transform = CGAffineTransform(scaleX: 3, y: 3)
 		activityIndicator?.tintColor = .black
 		activityIndicator?.startAnimating()
 		activityIndicator?.center = view.center
